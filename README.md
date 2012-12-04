@@ -1,7 +1,7 @@
 Minispec::Metadata
 ==================
 
-* https://github.com/ordinaryzelig/minispec-metadata
+https://github.com/ordinaryzelig/minispec-metadata
 
 ## Usage
 
