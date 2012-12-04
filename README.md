@@ -20,3 +20,8 @@ And then execute:
 Or install it yourself as:
 
     $ gem install minispec-metadata
+    
+## TODO
+
+* filter (e.g. run only slow: true)
+* focus
