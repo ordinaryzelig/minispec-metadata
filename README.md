@@ -1,6 +1,11 @@
-# Minispec::Metadata
+Minispec::Metadata
+==================
 
-TODO: Write a gem description
+https://github.com/ordinaryzelig/minispec-metadata
+
+## Usage
+
+Please see tests to see features in action. I would copy/paste here, but that would just be silly.
 
 ## Installation
 
@@ -15,15 +20,8 @@ And then execute:
 Or install it yourself as:
 
     $ gem install minispec-metadata
+    
+## TODO
 
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+* filter (e.g. run only slow: true)
+* focus
