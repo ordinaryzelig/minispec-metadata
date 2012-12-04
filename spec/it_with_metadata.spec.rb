@@ -1,0 +1,49 @@
+require_relative 'helper'
+
+describe MiniSpecMetadata::ItWithMetadata, description_meta: 'data' do
+
+  it 'accepts metadata arg', {} do
+    pass
+  end
+
+  it 'stores metadata for current spec', meta: 'data' do
+    metadata.fetch(:meta).must_equal 'data'
+  end
+
+  it 'inherits metadata from description' do
+    metadata.fetch(:description_meta).must_equal 'data'
+  end
+
+  specify 'it works with #specify', 1 => 2 do
+    metadata.fetch(1).must_equal 2
+  end
+
+  name = it 'returns name' do
+    name.must_equal __name__
+  end
+
+end
+
+describe MiniSpecMetadata::ItWithMetadata, 'with no metadata' do
+
+  it 'returns empty hash when no metadata set' do
+    metadata.must_equal({})
+  end
+
+end
+
+describe MiniSpecMetadata::ItWithMetadata do
+
+  before do
+    metadata.fetch(:before).must_equal 'accessible'
+  end
+
+  it 'is accessible in hooks', before: 'accessible', after: 'also accessible' do
+    pass
+  end
+
+  after do
+    metadata.fetch(:after).must_equal 'also accessible'
+  end
+
+end

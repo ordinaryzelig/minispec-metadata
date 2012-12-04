@@ -1,5 +1,3 @@
-module Minispec
-  module Metadata
-    VERSION = "0.0.1"
-  end
+module MiniSpecMetadata
+  VERSION = "0.1.0"
 end

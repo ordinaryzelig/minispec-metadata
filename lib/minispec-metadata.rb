@@ -1,7 +1,8 @@
-require "minispec-metadata/version"
+require 'minitest/spec'
 
-module Minispec
-  module Metadata
-    # Your code goes here...
-  end
+require "minispec-metadata/version"
+require 'minispec-metadata/describe_with_metadata'
+require 'minispec-metadata/it_with_metadata'
+
+module MiniSpecMetadata
 end
