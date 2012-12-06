@@ -44,3 +44,11 @@ And then execute:
 Or install it yourself as:
 
     $ gem install minispec-metadata
+
+## Implementation (for transparency)
+
+To add metadata to `it` blocks, I subclassed MiniTest::Spec.
+In order to ensure that it gets used out of the box,
+I changed the default Spec class to be the new subclass.
+
+To add metadata to `describe` blocks, I included a module into the Object class.
