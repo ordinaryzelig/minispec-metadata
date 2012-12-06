@@ -10,6 +10,11 @@ https://github.com/ordinaryzelig/minispec-metadata
 ```ruby
 describe 'Usage', some: 'metadata' do
 
+  before do
+    # Example usefulness:
+    # Capybara.current_driver = metadata[:driver]
+  end
+
   it 'defines a metadata method', more: 'metadata' do
     metadata.must_equal(
       some: 'metadata',
