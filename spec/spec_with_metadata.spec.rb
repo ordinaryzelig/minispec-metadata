@@ -1,6 +1,6 @@
 require_relative 'helper'
 
-describe MiniSpecMetadata::ItWithMetadata, description_meta: 'data' do
+describe MiniSpecMetadata::SpecWithMetadata, description_meta: 'data' do
 
   it 'accepts metadata arg', {} do
     pass
@@ -24,7 +24,7 @@ describe MiniSpecMetadata::ItWithMetadata, description_meta: 'data' do
 
 end
 
-describe MiniSpecMetadata::ItWithMetadata, 'with no metadata' do
+describe MiniSpecMetadata::SpecWithMetadata, 'with no metadata' do
 
   it 'returns empty hash when no metadata set' do
     metadata.must_equal({})
@@ -32,7 +32,7 @@ describe MiniSpecMetadata::ItWithMetadata, 'with no metadata' do
 
 end
 
-describe MiniSpecMetadata::ItWithMetadata do
+describe MiniSpecMetadata::SpecWithMetadata do
 
   before do
     metadata.fetch(:before).must_equal 'accessible'

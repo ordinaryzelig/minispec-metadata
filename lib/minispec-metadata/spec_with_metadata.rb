@@ -1,5 +1,5 @@
 module MiniSpecMetadata
-  class ItWithMetadata < MiniTest::Spec
+  class SpecWithMetadata < MiniTest::Spec
 
     @@metadata = {}
 
@@ -20,4 +20,4 @@ module MiniSpecMetadata
 end
 
 # Override the default spec type.
-MiniTest::Spec::TYPES[0] = [//, MiniSpecMetadata::ItWithMetadata]
+MiniTest::Spec::TYPES[0] = [//, MiniSpecMetadata::SpecWithMetadata]

@@ -5,7 +5,24 @@ https://github.com/ordinaryzelig/minispec-metadata
 
 ## Usage
 
-Please see tests to see features in action. I would copy/paste here, but that would just be silly.
+```ruby
+describe 'Usage', some: 'metadata' do
+
+  it 'defines a metadata method', more: 'metadata' do
+    metadata.must_equal(
+      some: 'metadata',
+      more: 'metadata',
+    )
+  end
+
+  it 'gives priority to closest metadata', some: 'different metadata' do
+    metadata.must_equal(
+      some: 'different metadata',
+    )
+  end
+
+end
+```
 
 ## Installation
 
@@ -20,8 +37,3 @@ And then execute:
 Or install it yourself as:
 
     $ gem install minispec-metadata
-    
-## TODO
-
-* filter (e.g. run only slow: true)
-* focus

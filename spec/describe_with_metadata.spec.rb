@@ -55,4 +55,12 @@ describe MiniSpecMetadata::DescribeWithMetadata, super_meta: 'data' do
 
   end
 
+  desc_class = describe 'return value' do
+
+    it 'equals description class' do
+      desc_class.must_equal self.class
+    end
+
+  end
+
 end
