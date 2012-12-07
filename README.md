@@ -31,6 +31,30 @@ describe 'Usage', some: 'metadata' do
 end
 ```
 
+### Gotchas
+
+If you registered a custom spec type and made it a subclass of MiniTest::Spec, e.g.:
+
+```ruby
+class IntegrationSpec < MiniTest::Spec
+  register_spec_type(/integration$/, self)
+end
+MiniTest
+```
+
+then you will need to change your superclass to be a subclass of the spec type that allows metadata
+(see Implementation below).
+Just change it like this:
+
+```ruby
+class IntegrationSpec < MiniTest::Spec.spec_type(//)
+  register_spec_type(/integration$/, self)
+end
+MiniTest
+```
+
+`MiniTest::Spec.spec_type` will always give you the top-level spec type, even if you don't use this gem.
+
 ## Installation
 
 Add this line to your application's Gemfile:
