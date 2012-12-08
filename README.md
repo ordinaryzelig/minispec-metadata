@@ -28,6 +28,28 @@ describe 'Usage', some: 'metadata' do
     )
   end
 
+  it 'provides a method to get the name of the spec' do
+    spec_name.must_equal 'provides a method to get the name of the spec'
+  end
+
+  describe MiniSpecMetadata::DescribeWithMetadata, 'additional description' do
+
+    it 'provides a method to get the descriptions' do
+      spec_descriptions.must_equal [MiniSpecMetadata::DescribeWithMetadata, 'additional description']
+    end
+
+    # I say "shortcut" because you can easily get this without this gem via
+    # self.class.desc
+    it 'provides a shortcut to get the main description' do
+      spec_description.must_equal MiniSpecMetadata::DescribeWithMetadata
+    end
+
+    it 'provides a method to get only the additional description' do
+      spec_additional_description.must_equal 'additional description'
+    end
+
+  end
+
 end
 ```
 

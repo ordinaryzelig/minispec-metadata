@@ -64,3 +64,27 @@ describe MiniSpecMetadata::DescribeWithMetadata, super_meta: 'data' do
   end
 
 end
+
+describe MiniSpecMetadata::DescribeWithMetadata, 'additional description' do
+
+  it 'provides a method to get the descriptions' do
+    spec_descriptions.must_equal [MiniSpecMetadata::DescribeWithMetadata, 'additional description']
+  end
+
+  it 'provides a shortcut to get the main description' do
+    spec_description.must_equal MiniSpecMetadata::DescribeWithMetadata
+  end
+
+  it 'provides a method to get only the additional description' do
+    spec_additional_description.must_equal 'additional description'
+  end
+
+  describe 'nested describe with no additional description' do
+
+    it 'does not inherit additional description from parent' do
+      spec_additional_description.must_be_nil
+    end
+
+  end
+
+end

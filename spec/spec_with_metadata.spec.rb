@@ -47,3 +47,11 @@ describe MiniSpecMetadata::SpecWithMetadata do
   end
 
 end
+
+describe MiniSpecMetadata::SpecWithMetadata, 'test name' do
+
+  it 'provides a method to get the name of the spec' do
+    spec_name.must_equal 'provides a method to get the name of the spec'
+  end
+
+end
