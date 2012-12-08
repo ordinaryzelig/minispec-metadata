@@ -53,6 +53,18 @@ describe 'Usage', some: 'metadata' do
 end
 ```
 
+Another great use is to do a version of [Ryan Bates' VCR trick](http://railscasts.com/episodes/291-testing-with-vcr?view=asciicast).
+
+```ruby
+describe 'VCR trick' do
+
+  it 'allows you to name your cassettes the same as the spec' do
+    VCR.use_cassette spec_name do
+    end
+  end
+end
+```
+
 ### Gotchas
 
 If you registered a custom spec type and made it a subclass of MiniTest::Spec, e.g.:
