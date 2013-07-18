@@ -5,5 +5,5 @@ rvm:
   - 2.0.0
 
 gemfile:
-  -- Gemfile
-  -- gemfiles/minitest-4
+  - Gemfile
+  - gemfiles/minitest-4
