@@ -1,3 +1,4 @@
 source 'https://rubygems.org'
 
 gem 'minitest', '< 5'
+gem 'awesome_print'
