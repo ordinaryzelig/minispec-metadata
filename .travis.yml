@@ -4,6 +4,8 @@ rvm:
   - 1.9.3
   - 2.0.0
 
+script: bundle exec rake
+
 gemfile:
   - Gemfile
   - gemfiles/minitest-4
