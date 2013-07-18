@@ -15,12 +15,12 @@ module MiniSpecMetadata
     end
 
     def metadata
-      description_metadata.merge @@metadata.fetch(__name__, {})
+      description_metadata.merge @@metadata.fetch(name, {})
     end
 
     # First arg passed to it block.
     def spec_name
-      @@spec_names[__name__]
+      @@spec_names[name]
     end
 
     # Description args passed to describe.

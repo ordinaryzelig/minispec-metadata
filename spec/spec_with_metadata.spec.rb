@@ -19,7 +19,7 @@ describe MiniSpecMetadata::SpecWithMetadata, description_meta: 'data' do
   end
 
   name = it 'returns name' do
-    name.must_equal __name__
+    name.must_equal name
   end
 
 end

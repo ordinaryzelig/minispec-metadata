@@ -1,1 +1,1 @@
-rvm --create 1.9.3-p327@minispec-metadata
+rvm --create 2.0.0-p0@minispec-metadata
