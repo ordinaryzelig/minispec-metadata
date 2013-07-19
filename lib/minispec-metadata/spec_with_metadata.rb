@@ -1,26 +1,38 @@
 module MiniSpecMetadata
-  class SpecWithMetadata < MiniTest::Spec
+  module SpecWithMetadata
 
-    @@metadata = {}
-    @@spec_names = {}
-
-    def self.it(desc = 'anonymous', metadata = {}, &block)
-      name = super desc, &block
-      @@metadata[name] = metadata
-      @@spec_names[name] = desc
-      name
+    def self.included(spec_class)
+      spec_class.extend(ClassMethods)
     end
-    class << self
-      alias :specify :it
+
+    module ClassMethods
+      def it(desc = 'anonymous', _metadata = {}, &block)
+        metadata =
+          class_variable_defined?(:@@metadata) ?
+            class_variable_get(:@@metadata) :
+            class_variable_set(:@@metadata, {})
+        spec_names =
+          class_variable_defined?(:@@spec_names) ?
+            class_variable_get(:@@spec_names) :
+            class_variable_set(:@@spec_names, {})
+
+        name = super desc, &block
+
+        metadata[name] = _metadata
+        spec_names[name] = desc
+        name
+      end
+      alias_method :specify, :it
     end
 
     def metadata
-      description_metadata.merge @@metadata.fetch(name, {})
+      class_metadata = self.class.class_variable_get(:@@metadata).fetch(name, {})
+      description_metadata.merge class_metadata
     end
 
     # First arg passed to it block.
     def spec_name
-      @@spec_names[name]
+      self.class.class_variable_get(:@@spec_names)[name]
     end
 
     # Description args passed to describe.
@@ -40,5 +52,4 @@ module MiniSpecMetadata
   end
 end
 
-# Override the default spec type.
-MiniTest::Spec::TYPES[0] = [//, MiniSpecMetadata::SpecWithMetadata]
+MiniTest::Spec.send :include, MiniSpecMetadata::SpecWithMetadata
