@@ -11,6 +11,7 @@ Gem::Specification.new do |gem|
   gem.description   = %q{MiniTest::Spec metadata}
   gem.summary       = %q{Pass metadata to MiniTest::Spec descriptions and specs like in RSpec.}
   gem.homepage      = "https://github.com/ordinaryzelig/minispec-metadata"
+  gem.license       = 'MIT'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
