@@ -22,6 +22,23 @@ describe MiniSpecMetadata::SpecWithMetadata, description_meta: 'data' do
     name.must_equal name
   end
 
+  describe 'in a nested describe', 'with no metadata' do
+
+    it 'works', works: true do
+      metadata[:works].must_equal true
+    end
+
+  end
+
+  describe 'in a nested describe', with_metadata: true do
+
+    it 'works', works: true do
+      metadata[:with_metadata].must_equal true
+      metadata[:works].must_equal true
+    end
+
+  end
+
 end
 
 describe MiniSpecMetadata::SpecWithMetadata, 'with no metadata' do
