@@ -8,6 +8,9 @@ https://github.com/ordinaryzelig/minispec-metadata
 ## Usage
 
 ```ruby
+require 'minitest/autorun'
+require 'minispec-metadata'
+
 describe 'Usage', some: 'metadata' do
 
   before do
