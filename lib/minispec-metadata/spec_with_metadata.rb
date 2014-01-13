@@ -6,7 +6,13 @@ module MiniSpecMetadata
     end
 
     module ClassMethods
-      def it(desc = 'anonymous', _metadata = {}, &block)
+      def it(desc = 'anonymous', _metadata = nil, &block)
+        if _metadata.is_a?(Symbol)
+          _metadata = { _metadata => true }
+        elsif _metadata == nil
+          _metadata = {}
+        end
+
         metadata =
           class_variable_defined?(:@@metadata) ?
             class_variable_get(:@@metadata) :

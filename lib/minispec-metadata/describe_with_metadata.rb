@@ -2,7 +2,13 @@ module MiniSpecMetadata
   module DescribeWithMetadata
 
     def describe(desc, *args, &block)
-      metadata = args.last.is_a?(Hash) ? args.pop : {}
+      if args.last.is_a?(Hash)
+        metadata = args.pop
+      elsif args.last.is_a?(Symbol)
+        metadata = { args.last => true }
+      else
+        metadata = {}
+      end
 
       additional_description = args.first
       description_class = super(desc, args, &block)
