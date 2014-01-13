@@ -14,6 +14,10 @@ describe MiniSpecMetadata::SpecWithMetadata, description_meta: 'data' do
     metadata.fetch(:description_meta).must_equal 'data'
   end
 
+  it "uses symbols as true values", :verity do
+    metadata.fetch(:verity).must_equal true
+  end
+
   specify 'it works with #specify', 1 => 2 do
     metadata.fetch(1).must_equal 2
   end
