@@ -18,6 +18,12 @@ describe MiniSpecMetadata::DescribeWithMetadata, super_meta: 'data' do
 
   end
 
+  describe 'when just a symbol is passed', :axiom do
+    it 'uses symbols as true values' do
+      metadata.fetch(:axiom).must_equal true
+    end
+  end
+
   describe 'duplicate', first: '1st' do
 
     it 'correctly scopes metadata to current description' do
