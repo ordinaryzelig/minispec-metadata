@@ -6,12 +6,17 @@ module MiniSpecMetadata
     end
 
     module ClassMethods
-      def it(desc = 'anonymous', _metadata = nil, &block)
-        if _metadata.is_a?(Symbol)
-          _metadata = { _metadata => true }
-        elsif _metadata == nil
-          _metadata = {}
-        end
+      def it(desc = 'anonymous', *_args, &block)
+        args = _args.dup
+
+        _metadata = 
+          if args.last.is_a?(Hash)
+            args.last
+          else
+            args.each_with_object({}) do |arg, hash|
+              hash[arg] = true
+            end
+          end
 
         metadata =
           class_variable_defined?(:@@metadata) ?

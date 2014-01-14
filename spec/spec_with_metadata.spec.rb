@@ -14,8 +14,9 @@ describe MiniSpecMetadata::SpecWithMetadata, description_meta: 'data' do
     metadata.fetch(:description_meta).must_equal 'data'
   end
 
-  it "uses symbols as true values", :verity do
+  it "uses symbols as true values", :verity, :words_are_hard do
     metadata.fetch(:verity).must_equal true
+    metadata.fetch(:words_are_hard).must_equal true
   end
 
   specify 'it works with #specify', 1 => 2 do
@@ -73,6 +74,15 @@ describe MiniSpecMetadata::SpecWithMetadata, 'test name' do
 
   it 'provides a method to get the name of the spec' do
     spec_name.must_equal 'provides a method to get the name of the spec'
+  end
+
+end
+
+describe MiniSpecMetadata::SpecWithMetadata, 'additional description', :respect do
+
+  it 'respects additional description' do
+    self.class.name.must_equal 'MiniSpecMetadata::SpecWithMetadata::additional description'
+    metadata.must_equal({respect: true})
   end
 
 end

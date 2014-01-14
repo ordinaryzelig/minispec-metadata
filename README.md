@@ -53,6 +53,13 @@ describe 'Usage', some: 'metadata' do
 
   end
 
+  # Thanks to @mfpiccolo for this.
+  it 'allows array of symbols like RSpec', :these, :work, :too do
+    metadata[:these].must_equal true
+    metadata[:work].must_equal true
+    metadata[:too].must_equal true
+  end
+
 end
 ```
 
@@ -80,3 +87,24 @@ And then execute:
 Or install it yourself:
 
     $ gem install minispec-metadata
+
+## Additional description gotcha
+
+By default, Minitest allows 2 descriptions:
+
+```ruby
+describe 'Description 1', 'Description 2'
+```
+
+But this gem allows symbols as metadata:
+
+```ruby
+describe 'Description', :additional
+```
+
+Technically, this gem breaks Minitest behavior here.
+With this gem, `:additional` is used as metadata.
+But in pure Minitest, it would have been used as the additional description.
+I personally have never seen anybody use the additional description,
+and I think the "symbols as metadata" feature is more useful.
+So I allowed this breakage of Minitest behavior.

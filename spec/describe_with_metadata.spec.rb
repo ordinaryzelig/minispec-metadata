@@ -18,9 +18,10 @@ describe MiniSpecMetadata::DescribeWithMetadata, super_meta: 'data' do
 
   end
 
-  describe 'when just a symbol is passed', :axiom do
+  describe 'when just a symbol is passed', :axiom, :vcr do
     it 'uses symbols as true values' do
       metadata.fetch(:axiom).must_equal true
+      metadata.fetch(:vcr).must_equal true
     end
   end
 
