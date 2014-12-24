@@ -68,7 +68,7 @@ describe MinispecMetadata::It do
 
 end
 
-describe MinispecMetadata::It, 'name' do
+describe MinispecMetadata::It, '#desc' do
 
   it 'provides a method to get the name of the spec' do
     desc.must_equal 'provides a method to get the name of the spec'
