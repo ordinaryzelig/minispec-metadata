@@ -13,6 +13,6 @@ describe "top level describe" do
   end
 
   it "another top level example" do
-    pass
+    desc.must_equal 'another top level example'
   end
 end
