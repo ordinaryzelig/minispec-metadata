@@ -8,7 +8,7 @@ module MinispecMetadata
       cls.extend ClassMethods
 
       cls.additional_desc = additional_desc
-      cls.metadata_by_describe[desc] = metadata || {}
+      cls.describe_metadata = metadata || {}
 
       cls
     end
@@ -17,10 +17,6 @@ module MinispecMetadata
 
       attr_reader :additional_desc
 
-      def metadata_by_describe
-        @metadata_by_describe ||= {}
-      end
-
       def describe_metadata
         super_describe_metadata =
           if superclass.respond_to? :describe_metadata
@@ -28,7 +24,7 @@ module MinispecMetadata
           else
             {}
           end
-        super_describe_metadata.merge(metadata_by_describe.fetch(desc))
+        super_describe_metadata.merge(@describe_metadata)
       end
 
       def descs
@@ -36,8 +32,11 @@ module MinispecMetadata
       end
 
       def additional_desc=(additional_desc)
-        @additional_desc = additional_desc
-        @additional_desc.freeze
+        @additional_desc = additional_desc.freeze
+      end
+
+      def describe_metadata=(metadata)
+        @describe_metadata = metadata.freeze
       end
 
     end
