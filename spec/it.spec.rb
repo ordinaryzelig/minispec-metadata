@@ -1,6 +1,6 @@
 require_relative 'helper'
 
-describe MiniSpecMetadata::It do
+describe MinispecMetadata::It do
 
   it 'stores metadata for current spec', meta: 'data' do
     metadata.fetch(:meta).must_equal 'data'
@@ -68,7 +68,7 @@ describe MiniSpecMetadata::It do
 
 end
 
-describe MiniSpecMetadata::It, 'name' do
+describe MinispecMetadata::It, 'name' do
 
   it 'provides a method to get the name of the spec' do
     desc.must_equal 'provides a method to get the name of the spec'

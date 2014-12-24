@@ -1,6 +1,6 @@
 require_relative 'helper'
 
-describe MiniSpecMetadata::Describe, super_meta: 'data' do
+describe MinispecMetadata::Describe, super_meta: 'data' do
 
   describe 'as 2nd arg after description', second: '2nd' do
 
@@ -72,10 +72,10 @@ describe MiniSpecMetadata::Describe, super_meta: 'data' do
 
 end
 
-describe MiniSpecMetadata::Describe, 'additional description', 'even more' do
+describe MinispecMetadata::Describe, 'additional description', 'even more' do
 
   it 'provides a method to get the descriptions' do
-    self.class.descs.must_equal [MiniSpecMetadata::Describe, 'additional description', 'even more']
+    self.class.descs.must_equal [MinispecMetadata::Describe, 'additional description', 'even more']
   end
 
   it 'provides a method to get only the additional description' do
@@ -92,10 +92,10 @@ describe MiniSpecMetadata::Describe, 'additional description', 'even more' do
 
 end
 
-describe MiniSpecMetadata::Describe, 'additional description', :respect do
+describe MinispecMetadata::Describe, 'additional description', :respect do
 
   it 'respects additional description' do
-    self.class.name.must_equal 'MiniSpecMetadata::Describe::additional description'
+    self.class.name.must_equal 'MinispecMetadata::Describe::additional description'
     metadata.must_equal(respect: true)
   end
 

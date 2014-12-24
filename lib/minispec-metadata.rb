@@ -6,7 +6,7 @@ require "minispec-metadata/version"
 require 'minispec-metadata/it'
 require 'minispec-metadata/describe'
 
-module MiniSpecMetadata
+module MinispecMetadata
 
   module_function
 
@@ -26,3 +26,5 @@ module MiniSpecMetadata
   end
 
 end
+
+MiniSpecMetadata = MinispecMetadata

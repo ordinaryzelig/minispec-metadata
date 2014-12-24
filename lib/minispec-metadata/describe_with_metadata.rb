@@ -1,4 +1,4 @@
-module MiniSpecMetadata
+module MinispecMetadata
   module DescribeWithMetadata
 
     def describe(desc, *_args, &block)
@@ -42,4 +42,4 @@ module MiniSpecMetadata
   end
 end
 
-Object.send :include, MiniSpecMetadata::DescribeWithMetadata
+Object.send :include, MinispecMetadata::DescribeWithMetadata

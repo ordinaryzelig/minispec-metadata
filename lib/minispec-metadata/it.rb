@@ -1,4 +1,4 @@
-module MiniSpecMetadata
+module MinispecMetadata
   module It
 
     def self.included(spec_class)
@@ -10,7 +10,7 @@ module MiniSpecMetadata
       def it(description, *metadata, &block)
         name = super description, &block
 
-        metadata = MiniSpecMetadata.extract_metadata!(metadata)
+        metadata = MinispecMetadata.extract_metadata!(metadata)
 
         self.it_descriptions[name] = description
         self.metadata_by_test_name[name] = metadata
@@ -42,4 +42,4 @@ module MiniSpecMetadata
   end
 end
 
-Minitest::Spec.send :include, MiniSpecMetadata::It
+Minitest::Spec.send :include, MinispecMetadata::It

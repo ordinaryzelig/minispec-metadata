@@ -1,8 +1,8 @@
-module MiniSpecMetadata
+module MinispecMetadata
   module Describe
 
     def describe(desc, *additional_desc, &block)
-      metadata = MiniSpecMetadata.extract_metadata! additional_desc
+      metadata = MinispecMetadata.extract_metadata! additional_desc
 
       cls = super(desc, *additional_desc, &block)
       cls.extend ClassMethods
@@ -45,4 +45,4 @@ module MiniSpecMetadata
   end
 end
 
-Object.send :include, MiniSpecMetadata::Describe
+Object.send :include, MinispecMetadata::Describe
