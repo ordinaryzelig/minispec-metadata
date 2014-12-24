@@ -18,12 +18,12 @@ describe MiniSpecMetadata::Describe, super_meta: 'data' do
 
   end
 
-  #describe 'when just a symbol is passed', :axiom, :vcr do
-    #it 'uses symbols as true values' do
-      #metadata.fetch(:axiom).must_equal true
-      #metadata.fetch(:vcr).must_equal true
-    #end
-  #end
+  describe 'when just a symbol is passed', :axiom, :vcr do
+    it 'uses symbols as true values' do
+      metadata.fetch(:axiom).must_equal true
+      metadata.fetch(:vcr).must_equal true
+    end
+  end
 
   describe 'duplicate', first: '1st' do
 
@@ -79,15 +79,24 @@ describe MiniSpecMetadata::Describe, 'additional description', 'even more' do
   end
 
   it 'provides a method to get only the additional description' do
-    self.class.descs_additional.must_equal ['additional description', 'even more']
+    self.class.additional_desc.must_equal ['additional description', 'even more']
   end
 
   describe 'nested describe with no additional description' do
 
     it 'does not inherit additional description from parent' do
-      self.class.descs_additional.must_be_empty
+      self.class.additional_desc.must_be_empty
     end
 
+  end
+
+end
+
+describe MiniSpecMetadata::Describe, 'additional description', :respect do
+
+  it 'respects additional description' do
+    self.class.name.must_equal 'MiniSpecMetadata::Describe::additional description'
+    metadata.must_equal(respect: true)
   end
 
 end

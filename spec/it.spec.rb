@@ -40,10 +40,13 @@ describe MiniSpecMetadata::It do
       metadata.fetch(:description_meta).must_equal 'data'
     end
 
-    #it "uses symbols as true values", :verity, :words_are_hard do
-      #metadata.fetch(:verity).must_equal true
-      #metadata.fetch(:words_are_hard).must_equal true
-    #end
+    it "uses symbols as true values", :verity, :words_are_hard do
+      metadata.must_equal(
+        description_meta:  'data',
+        verity:            true,
+        words_are_hard:    true,
+      )
+    end
 
     describe 'in a nested describe', 'with no metadata' do
 
@@ -61,11 +64,6 @@ describe MiniSpecMetadata::It do
 
     end
 
-    #it 'works if an "it" comes after a "describe" on the same level', works: true do
-      #metadata.fetch(:description_meta).must_equal 'data'
-      #metadata.fetch(:works).must_equal true
-    #end
-
   end
 
 end
@@ -78,11 +76,3 @@ describe MiniSpecMetadata::It, 'name' do
 
 end
 
-#describe MiniSpecMetadata::SpecWithMetadata, 'additional description', :respect do
-
-  #it 'respects additional description' do
-    #self.class.name.must_equal 'MiniSpecMetadata::SpecWithMetadata::additional description'
-    #metadata.must_equal({respect: true})
-  #end
-
-#end

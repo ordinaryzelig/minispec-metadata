@@ -1,13 +1,13 @@
 module MiniSpecMetadata
   module Describe
 
-    def describe(desc, *additional_descriptions, &block)
-      metadata = additional_descriptions.pop if additional_descriptions.last.is_a?(Hash)
+    def describe(desc, *additional_desc, &block)
+      metadata = MiniSpecMetadata.extract_metadata! additional_desc
 
-      cls = super(desc, *additional_descriptions, &block)
+      cls = super(desc, *additional_desc, &block)
       cls.extend ClassMethods
 
-      cls.descs_additional = additional_descriptions
+      cls.additional_desc = additional_desc
       cls.metadata_by_describe[desc] = metadata || {}
 
       cls
@@ -15,7 +15,7 @@ module MiniSpecMetadata
 
     module ClassMethods
 
-      attr_reader :descs_additional
+      attr_reader :additional_desc
 
       def metadata_by_describe
         @metadata_by_describe ||= {}
@@ -32,12 +32,12 @@ module MiniSpecMetadata
       end
 
       def descs
-        [desc, *descs_additional].compact
+        [desc, *additional_desc].compact
       end
 
-      def descs_additional=(additional_descriptions)
-        @descs_additional = additional_descriptions
-        @descs_additional.freeze
+      def additional_desc=(additional_desc)
+        @additional_desc = additional_desc
+        @additional_desc.freeze
       end
 
     end

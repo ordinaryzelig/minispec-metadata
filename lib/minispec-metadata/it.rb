@@ -7,8 +7,10 @@ module MiniSpecMetadata
 
     module ClassMethods
 
-      def it(description, metadata = {}, &block)
+      def it(description, *metadata, &block)
         name = super description, &block
+
+        metadata = MiniSpecMetadata.extract_metadata!(metadata)
 
         self.it_descriptions[name] = description
         self.metadata_by_test_name[name] = metadata
