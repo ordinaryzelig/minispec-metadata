@@ -1,6 +1,6 @@
 require_relative 'helper'
 
-describe MiniSpecMetadata::DescribeWithMetadata, super_meta: 'data' do
+describe MiniSpecMetadata::Describe, super_meta: 'data' do
 
   describe 'as 2nd arg after description', second: '2nd' do
 
@@ -18,17 +18,17 @@ describe MiniSpecMetadata::DescribeWithMetadata, super_meta: 'data' do
 
   end
 
-  describe 'when just a symbol is passed', :axiom, :vcr do
-    it 'uses symbols as true values' do
-      metadata.fetch(:axiom).must_equal true
-      metadata.fetch(:vcr).must_equal true
-    end
-  end
+  #describe 'when just a symbol is passed', :axiom, :vcr do
+    #it 'uses symbols as true values' do
+      #metadata.fetch(:axiom).must_equal true
+      #metadata.fetch(:vcr).must_equal true
+    #end
+  #end
 
   describe 'duplicate', first: '1st' do
 
     it 'correctly scopes metadata to current description' do
-      metadata.fetch(:first).must_equal '1st'
+      metadata.must_equal(first: '1st', super_meta: 'data')
       metadata.key?(:second).must_equal false
     end
 
@@ -37,7 +37,7 @@ describe MiniSpecMetadata::DescribeWithMetadata, super_meta: 'data' do
   describe 'duplicate', second: '2nd' do
 
     it 'correctly scopes metadata to current description' do
-      metadata.fetch(:second).must_equal '2nd'
+      metadata.must_equal(second: '2nd', super_meta: 'data')
       metadata.key?(:first).must_equal false
     end
 
@@ -72,24 +72,20 @@ describe MiniSpecMetadata::DescribeWithMetadata, super_meta: 'data' do
 
 end
 
-describe MiniSpecMetadata::DescribeWithMetadata, 'additional description' do
+describe MiniSpecMetadata::Describe, 'additional description', 'even more' do
 
   it 'provides a method to get the descriptions' do
-    spec_descriptions.must_equal [MiniSpecMetadata::DescribeWithMetadata, 'additional description']
-  end
-
-  it 'provides a shortcut to get the main description' do
-    spec_description.must_equal MiniSpecMetadata::DescribeWithMetadata
+    self.class.descs.must_equal [MiniSpecMetadata::Describe, 'additional description', 'even more']
   end
 
   it 'provides a method to get only the additional description' do
-    spec_additional_description.must_equal 'additional description'
+    self.class.descs_additional.must_equal ['additional description', 'even more']
   end
 
   describe 'nested describe with no additional description' do
 
     it 'does not inherit additional description from parent' do
-      spec_additional_description.must_be_nil
+      self.class.descs_additional.must_be_empty
     end
 
   end

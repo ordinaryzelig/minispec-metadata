@@ -34,10 +34,6 @@ describe MiniSpecMetadata::It do
 
   end
 
-  it 'provides a method to get the name of the spec' do
-    desc.must_equal 'provides a method to get the name of the spec'
-  end
-
   describe 'with description metadata', description_meta: 'data' do
 
     it 'inherits metadata from description' do
@@ -70,6 +66,14 @@ describe MiniSpecMetadata::It do
       #metadata.fetch(:works).must_equal true
     #end
 
+  end
+
+end
+
+describe MiniSpecMetadata::It, 'name' do
+
+  it 'provides a method to get the name of the spec' do
+    desc.must_equal 'provides a method to get the name of the spec'
   end
 
 end
