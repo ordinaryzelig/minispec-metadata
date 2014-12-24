@@ -72,20 +72,48 @@ describe MinispecMetadata::Describe, super_meta: 'data' do
 
 end
 
-describe MinispecMetadata::Describe, 'additional description', 'even more' do
+if MiniTest.const_defined?(:Unit) # Minitest version 4 (maybe before too?)
 
-  it 'provides a method to get the descriptions' do
-    self.class.descs.must_equal [MinispecMetadata::Describe, 'additional description', 'even more']
+  # Only allows 1 additional description.
+  describe MinispecMetadata::Describe, 'additional description' do
+
+    it 'provides a method to get the descriptions' do
+      self.class.descs.must_equal [MinispecMetadata::Describe, 'additional description']
+    end
+
+    it 'provides a method to get only the additional description' do
+      self.class.additional_desc.must_equal ['additional description']
+    end
+
+    describe 'nested describe with no additional description' do
+
+      it 'does not inherit additional description from parent' do
+        self.class.additional_desc.must_be_empty
+      end
+
+    end
+
   end
 
-  it 'provides a method to get only the additional description' do
-    self.class.additional_desc.must_equal ['additional description', 'even more']
-  end
+else
 
-  describe 'nested describe with no additional description' do
+  # Minitest version 5
+  describe MinispecMetadata::Describe, 'additional description', 'even more' do
 
-    it 'does not inherit additional description from parent' do
-      self.class.additional_desc.must_be_empty
+    it 'provides a method to get the descriptions' do
+      self.class.descs.must_equal [MinispecMetadata::Describe, 'additional description', 'even more']
+    end
+
+    it 'provides a method to get only the additional description' do
+      self.class.additional_desc.must_equal ['additional description', 'even more']
+    end
+
+    describe 'nested describe with no additional description' do
+
+      it 'does not inherit additional description from parent' do
+        self.class.additional_desc.must_be_empty
+      end
+
     end
 
   end
