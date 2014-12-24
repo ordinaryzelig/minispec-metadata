@@ -1,5 +1,5 @@
 require 'minitest/spec'
-require_relative 'core_extensions'
+require_relative 'backwards'
 
 require "minispec-metadata/version"
 
