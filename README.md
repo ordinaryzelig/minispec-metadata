@@ -90,7 +90,7 @@ Or install it yourself:
 
 ## Additional description gotcha
 
-By default, Minitest allows 2 descriptions:
+In Minitest <= 4, Minitest allows 2 descriptions:
 
 ```ruby
 describe 'Description 1', 'Description 2'
@@ -108,3 +108,9 @@ But in pure Minitest, it would have been used as the additional description.
 I personally have never seen anybody use the additional description,
 and I think the "symbols as metadata" feature is more useful.
 So I allowed this breakage of Minitest behavior.
+
+## Compatibility
+
+Tested with Minitest 4 and up.
+Might work with older versions but I haven't tested them.
+See .travis to see Ruby versions tested.
