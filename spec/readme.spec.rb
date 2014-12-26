@@ -2,13 +2,8 @@ require_relative 'helper'
 
 readme = File.readlines(__dir__ + '/../README.md').map(&:chomp)
 specs =
-  readme
-    .drop_while do |line|
-      line != '# readme.spec.rb'
-    end
-    .take_while do |line|
-      line != '```'
-    end
-    .join("\n")
-
+  readme.select do |line, idx|
+    true if (line == '# readme.spec.rb')..(line == '```')
+  end[0...-1]
+  .join("\n")
 instance_eval specs
