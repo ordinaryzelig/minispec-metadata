@@ -1,4 +1,6 @@
-readme = File.readlines(File.dirname(File.expand_path(__FILE__)) + '/../README.md').map(&:chomp)
+require_relative 'helper'
+
+readme = File.readlines(__dir__ + '/../README.md').map(&:chomp)
 specs =
   readme
     .drop_while do |line|
