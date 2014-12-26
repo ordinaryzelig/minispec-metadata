@@ -5,7 +5,7 @@ require 'minispec-metadata/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "minispec-metadata"
-  gem.version       = MiniSpecMetadata::VERSION
+  gem.version       = MinispecMetadata::VERSION
   gem.authors       = ["Jared Ning"]
   gem.email         = ["jared@redningja.com"]
   gem.description   = %q{MiniTest::Spec metadata}

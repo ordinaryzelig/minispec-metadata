@@ -1,4 +1,4 @@
-module MiniSpecMetadata
+module MinispecMetadata
   module SpecWithMetadata
 
     def self.included(spec_class)
@@ -63,4 +63,4 @@ module MiniSpecMetadata
   end
 end
 
-MiniTest::Spec.send :include, MiniSpecMetadata::SpecWithMetadata
+MiniTest::Spec.send :include, MinispecMetadata::SpecWithMetadata
