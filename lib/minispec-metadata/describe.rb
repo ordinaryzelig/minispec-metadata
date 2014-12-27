@@ -1,5 +1,3 @@
-MINITEST_VERSION_MAJOR = Integer(MiniTest::Unit::VERSION.split('.').first)
-
 module MinispecMetadata
   module Describe
 
@@ -10,7 +8,7 @@ module MinispecMetadata
       # Minitest 4 allows max 1 additional_desc.
       # So we need to pass up only the number of allowed additional_desc.
       additional_allowed =
-        if MINITEST_VERSION_MAJOR <= 4
+        if Minitest::Versions::MAJOR <= 4
           additional_desc.first(1)
         else
           additional_desc

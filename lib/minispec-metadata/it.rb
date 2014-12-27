@@ -27,12 +27,16 @@ module MinispecMetadata
         @it_descriptions ||= {}
       end
 
+      def metadata_for_test_name(test_name)
+        describe_metadata.merge(
+          metadata_by_test_name.fetch(test_name)
+        )
+      end
+
     end
 
     def metadata
-      self.class.describe_metadata.merge(
-        self.class.metadata_by_test_name.fetch(name)
-      )
+      self.class.metadata_for_test_name(name)
     end
 
     def desc
