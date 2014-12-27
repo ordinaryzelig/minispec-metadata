@@ -84,7 +84,9 @@ end
 
 ### Tags
 
-Use the `--tag TAG` option to focus on certain tests according to metadata.
+(Only for Ruby >= 2 and Minitest >= 5)
+
+Use the `--tag TAG` option to focus on certain tests according to metadata (only symbols as metadata keys).
 E.g. Run only the slow tests below with option `--tag js`:
 
 ```ruby
@@ -97,6 +99,8 @@ describe 'integration tests' do
   end
 end
 ```
+
+You can use `--tag` more than once to include more tags to be run (any matching tags will run).
 
 Note that when using `rake`, you need to wrap Minitest's options like this: `rake test TESTOPTS='--tag js'`.
 
