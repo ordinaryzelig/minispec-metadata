@@ -82,6 +82,24 @@ describe 'VCR trick' do
 end
 ```
 
+### Tags
+
+Use the `--tag TAG` option to focus on certain tests according to metadata.
+E.g. Run only the slow tests below with option `--tag js`:
+
+```ruby
+describe 'integration tests' do
+  it 'runs super slow JS stuff', :js do
+    # Will run.
+  end
+  it 'runs fast stuff' do
+    # Will not run.
+  end
+end
+```
+
+Note that when using `rake`, you need to wrap Minitest's options like this: `rake test TESTOPTS='--tag js'`.
+
 ## Installation
 
 Add this line to your application's Gemfile:

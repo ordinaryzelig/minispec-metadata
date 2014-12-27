@@ -19,3 +19,5 @@ module Minitest
   end
 
 end
+
+require_relative 'test_tags_verifier' if ENV['TEST_TAGS']
