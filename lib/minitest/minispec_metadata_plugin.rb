@@ -20,4 +20,4 @@ module Minitest
 
 end
 
-require_relative 'test_tags_verifier' if ENV['TEST_TAGS'] && Minitest::Versions::MAJOR >= 5
+require_relative 'test_tags_verifier' if ENV['TEST_TAGS'] && MinispecMetadata.supports_tags?

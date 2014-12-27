@@ -9,7 +9,7 @@ end
 
 task :test_tags do
   require 'minispec-metadata'
-  if Minitest::Versions::MAJOR >= 5
+  if MinispecMetadata.supports_tags?
     sh 'TEST_TAGS=true ruby spec/describe.spec.rb --tag minitest_5'
   end
 end
