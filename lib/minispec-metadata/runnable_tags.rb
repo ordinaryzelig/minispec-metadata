@@ -29,7 +29,7 @@ if Minitest::Versions::MAJOR == 5 && RUBY_VERSION.to_i == 2
 
     end
 
-    Minitest::Test.singleton_class.prepend RunnableTags
+    Minitest::Test.singleton_class.send :prepend, RunnableTags
 
   end
 
