@@ -8,5 +8,8 @@ Rake::TestTask.new :test do |t|
 end
 
 task :test_tags do
-  sh 'TEST_TAGS=true ruby spec/describe.spec.rb --tag minitest_5'
+  require 'minispec-metadata'
+  if Minitest::Versions::MAJOR >= 5
+    sh 'TEST_TAGS=true ruby spec/describe.spec.rb --tag minitest_5'
+  end
 end

@@ -1,4 +1,4 @@
-if Minitest::Versions::MAJOR == 5 && RUBY_VERSION.to_i == 2
+if Minitest::Versions::MAJOR >= 5 && RUBY_VERSION.to_i >= 2
 
   module MinispecMetadata
     class << self
