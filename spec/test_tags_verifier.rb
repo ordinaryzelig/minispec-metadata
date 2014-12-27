@@ -33,7 +33,7 @@ module Minitest
 
     def all_results_match_tags?
       results.all? do |result|
-        result.class.matches_any_tag?(result.name)
+        result.class.runnable_methods.include?(result.name)
       end
     end
 
