@@ -72,48 +72,39 @@ describe MinispecMetadata::Describe, super_meta: 'data' do
 
 end
 
-if MiniTest.const_defined?(:Unit) # Minitest version 4 (maybe before too?)
+# Only allows 1 additional description.
+describe MinispecMetadata::Describe, 'additional description' do
 
-  # Only allows 1 additional description.
-  describe MinispecMetadata::Describe, 'additional description' do
+  it 'provides a method to get the descriptions' do
+    self.class.descs.must_equal [MinispecMetadata::Describe, 'additional description']
+  end
 
-    it 'provides a method to get the descriptions' do
-      self.class.descs.must_equal [MinispecMetadata::Describe, 'additional description']
-    end
+  it 'provides a method to get only the additional description' do
+    self.class.additional_desc.must_equal ['additional description']
+  end
 
-    it 'provides a method to get only the additional description' do
-      self.class.additional_desc.must_equal ['additional description']
-    end
+  describe 'nested describe with no additional description' do
 
-    describe 'nested describe with no additional description' do
-
-      it 'does not inherit additional description from parent' do
-        self.class.additional_desc.must_be_empty
-      end
-
+    it 'does not inherit additional description from parent' do
+      self.class.additional_desc.must_be_empty
     end
 
   end
 
-else
+end
 
-  # Minitest version 5
-  describe MinispecMetadata::Describe, 'additional description', 'even more' do
+if MINITEST_VERSION_MAJOR >= 5
 
-    it 'provides a method to get the descriptions' do
-      self.class.descs.must_equal [MinispecMetadata::Describe, 'additional description', 'even more']
-    end
+  describe 'stuff', 'more stuff', {even_more: 'stuff'}, :holy_cow_that_is_a_lot_of_stuff do
 
-    it 'provides a method to get only the additional description' do
-      self.class.additional_desc.must_equal ['additional description', 'even more']
-    end
-
-    describe 'nested describe with no additional description' do
-
-      it 'does not inherit additional description from parent' do
-        self.class.additional_desc.must_be_empty
-      end
-
+    it 'preserves additional description but still allows any value for metadata', :more? => 'yeah' do
+      self.class.descs.must_equal ['stuff', 'more stuff', {even_more: 'stuff'}, :holy_cow_that_is_a_lot_of_stuff]
+      metadata.must_equal(
+        'more stuff'                     => true,
+        :even_more                       => 'stuff',
+        :holy_cow_that_is_a_lot_of_stuff => true,
+        :more?                           => 'yeah',
+      )
     end
 
   end
@@ -123,8 +114,15 @@ end
 describe MinispecMetadata::Describe, 'additional description', :respect do
 
   it 'respects additional description' do
-    self.class.name.must_equal 'MinispecMetadata::Describe::additional description'
-    metadata.must_equal(respect: true)
+    if MINITEST_VERSION_MAJOR <= 4
+      self.class.name.must_equal 'MinispecMetadata::Describe::additional description'
+    else
+      self.class.name.must_equal 'MinispecMetadata::Describe::additional description::respect'
+    end
+    metadata.must_equal(
+      'additional description' => true,
+      :respect                 => true,
+    )
   end
 
 end

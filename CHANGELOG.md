@@ -1,3 +1,8 @@
+## 3.1.0
+
+* Do not desctructively extract metadata from additional_desc.
+* Use ALL additional_desc as metadata.
+
 ## 3.0.0
 
 * Total rewrite.

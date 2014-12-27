@@ -1,6 +1,6 @@
 # For a bit of backward compatibility.
 # Thanks to @jhsu for discovering the discrepancy.
-if MiniTest.const_defined?(:Unit)
+if MiniTest::Unit.const_defined?(:TestCase)
   class MiniTest::Unit::TestCase
     def name
       __name__

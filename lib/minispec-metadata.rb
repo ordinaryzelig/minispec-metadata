@@ -10,16 +10,14 @@ module MinispecMetadata
 
   module_function
 
-  def extract_metadata!(args)
+  def extract_metadata(args)
     metadata = {}
-    args.delete_if do |arg|
+    args.each do |arg|
       case arg
       when Hash
         metadata.merge! arg
-      when Symbol
-        metadata.merge!(arg => true)
       else
-        false
+        metadata.merge!(arg => true)
       end
     end
     metadata

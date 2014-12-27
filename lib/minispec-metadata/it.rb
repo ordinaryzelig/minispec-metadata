@@ -10,7 +10,7 @@ module MinispecMetadata
       def it(description, *metadata, &block)
         name = super description, &block
 
-        metadata = MinispecMetadata.extract_metadata!(metadata)
+        metadata = MinispecMetadata.extract_metadata(metadata)
 
         self.it_descriptions[name] = description
         self.metadata_by_test_name[name] = metadata
