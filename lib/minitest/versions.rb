@@ -4,7 +4,7 @@ module Minitest
 
     module_function
 
-    %i[major minor patch].each_with_index do |version, idx|
+    [:major, :minor, :patch].each_with_index do |version, idx|
       version_int = Minitest::Unit::VERSION.split('.')[idx].to_i
       define_method version do
         version_int
