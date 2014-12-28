@@ -59,10 +59,10 @@ module MinispecMetadata
     def runnable_method_matches_any_tags?(runnable_method, tags)
       tags.any? do |tag|
         metadata = metadata_for_test_name(runnable_method)
-        value = metadata[tag.key]
+        value = metadata[tag.key] || metadata[tag.key.to_sym]
         matches =
           if tag.value?
-            value == tag.value
+            value.to_s == tag.value
           else
             !!value
           end
@@ -87,7 +87,7 @@ module MinispecMetadata
     end
 
     def key
-      @key ||= @tag_string[/\w+/].to_sym
+      @key ||= @tag_string[/\w+/]
     end
 
     def value

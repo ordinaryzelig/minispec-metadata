@@ -86,7 +86,7 @@ end
 
 (Only for Ruby >= 2 and Minitest >= 5)
 
-Use the `--tag TAG` or `-tTAG` option to focus on certain tests according to metadata (only symbols as metadata keys).
+Use the `--tag TAG` or `-tTAG` option to focus on certain tests according to metadata (will match both string/symbol as key/value).
 E.g. Run only the slow tests below with option `--tag js`:
 
 ```ruby
