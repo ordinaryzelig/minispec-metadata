@@ -51,6 +51,14 @@ describe 'Usage', some: 'metadata' do
       self.class.desc.must_equal MinispecMetadata
     end
 
+    it 'treats additional descriptions as metadata too', meta: 'data' do
+      metadata.must_equal(
+        :some                    => 'metadata',
+        'additional description' => true,
+        :meta                    => 'data',
+      )
+    end
+
   end
 
   # Thanks to @mfpiccolo for this.
@@ -74,6 +82,31 @@ describe 'VCR trick' do
 end
 ```
 
+### Tags
+
+(Only for Ruby >= 2 and Minitest >= 5)
+
+Use the `--tag TAG` or `-tTAG` option to focus on certain tests according to metadata (will match both string/symbol as key/value).
+E.g. Run only the slow tests below with option `--tag js`:
+
+```ruby
+describe 'integration tests' do
+  it 'runs super slow JS stuff', :js do
+    # Will run.
+  end
+  it 'runs fast stuff' do
+    # Will not run.
+  end
+end
+```
+
+You can use `--tag` more than once to include more tags to be run (any matching tags will run).
+
+If an exclusive tag, e.g. `~slow`, is used alone, all tests except those tagged slow will be run.
+If an exclusive tag is used in addition to any inclusive tags, then the exclusive tag will just filter those included.
+
+Note that when using `rake`, you need to wrap Minitest's options like this: `rake test TESTOPTS='--tag js'`.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -87,27 +120,6 @@ And then execute:
 Or install it yourself:
 
     $ gem install minispec-metadata
-
-## Additional description gotcha
-
-In Minitest <= 4, Minitest allows 2 descriptions:
-
-```ruby
-describe 'Description 1', 'Description 2'
-```
-
-But this gem allows symbols as metadata:
-
-```ruby
-describe 'Description', :additional
-```
-
-Technically, this gem breaks Minitest behavior here.
-With this gem, `:additional` is used as metadata.
-But in pure Minitest, it would have been used as the additional description.
-I personally have never seen anybody use the additional description,
-and I think the "symbols as metadata" feature is more useful.
-So I allowed this breakage of Minitest behavior.
 
 ## Compatibility
 

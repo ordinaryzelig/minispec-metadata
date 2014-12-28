@@ -2,7 +2,7 @@ require_relative 'helper'
 
 # Confirmed to not work with v2.0.0.
 # Thanks to @jrochkind.
-describe "top level describe" do    
+describe "top level describe" do
   describe "an inner describe" do
     before do
       desc.wont_be_nil

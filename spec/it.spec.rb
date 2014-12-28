@@ -51,7 +51,11 @@ describe MinispecMetadata::It do
     describe 'in a nested describe', 'with no metadata' do
 
       it 'works', works: true do
-        metadata.must_equal(description_meta: 'data', works: true)
+        metadata.must_equal(
+          :description_meta  => 'data',
+          'with no metadata' => true,
+          :works             => true,
+        )
       end
 
     end
