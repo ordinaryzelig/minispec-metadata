@@ -1,3 +1,7 @@
+## 3.2.0
+
+* Add support for tags for command line filtering.
+
 ## 3.1.0
 
 * Do not desctructively extract metadata from additional_desc.
