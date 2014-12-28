@@ -7,6 +7,7 @@ require 'minispec-metadata/version'
 
 require 'minispec-metadata/it'
 require 'minispec-metadata/describe'
+require 'minispec-metadata/tags'
 
 module MinispecMetadata
 

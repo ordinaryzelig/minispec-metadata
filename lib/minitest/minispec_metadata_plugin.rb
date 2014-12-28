@@ -2,7 +2,6 @@
 # Any other version won't find this file automatically.
 
 require 'minispec-metadata'
-require 'minispec-metadata/tags'
 
 module Minitest
 
