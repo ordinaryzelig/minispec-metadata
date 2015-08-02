@@ -1,6 +1,6 @@
 require_relative 'helper'
 
-readme = File.readlines(__dir__ + '/../README.md').map(&:chomp)
+readme = File.readlines(File.dirname(__FILE__) + '/../README.md').map(&:chomp)
 specs =
   readme.select do |line, idx|
     true if (line == '# readme.spec.rb')..(line == '```')

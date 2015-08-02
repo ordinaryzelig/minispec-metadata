@@ -1,3 +1,7 @@
+## 3.2.1
+
+* Remove backwards compatibility for `__dir__`. (Thanks @brennovich for noticiing.)
+
 ## 3.2.0
 
 * Add support for tags for command line filtering.
