@@ -34,7 +34,7 @@ module MinispecMetadata
           else
             {}
           end
-        super_describe_metadata.merge(@describe_metadata)
+        super_describe_metadata.merge(@describe_metadata || {})
       end
 
       def descs
