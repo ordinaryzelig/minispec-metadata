@@ -123,6 +123,6 @@ Or install it yourself:
 
 ## Compatibility
 
-Tested with Minitest 4 and up.
+Tested with Minitest 4 and up, Ruby version 2 and up.
 Might work with older versions but I haven't tested them.
 See .travis to see Ruby versions tested.
