@@ -28,13 +28,12 @@ module MinispecMetadata
       attr_reader :additional_desc
 
       def describe_metadata
-        super_describe_metadata =
-          if superclass.respond_to? :describe_metadata
-            superclass.describe_metadata
-          else
-            {}
-          end
-        super_describe_metadata.merge(@describe_metadata)
+        @describe_metadata ||= {}
+        if superclass.respond_to?(:describe_metadata)
+          superclass.describe_metadata.merge(@describe_metadata)
+        else
+          @describe_metadata
+        end
       end
 
       def descs
