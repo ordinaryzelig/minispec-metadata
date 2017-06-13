@@ -121,8 +121,18 @@ Or install it yourself:
 
     $ gem install minispec-metadata
 
+### Rails
+
+There are things you *MUST* do to get Minitest::Spec to work with rails that this gem cannot do for you.
+There are a handful of gems that will help you including my [minispec-rails gem](https://github.com/ordinaryzelig/minispec-rails).
+Whatever path you decide to take, do this AFTER you've taken those steps:
+
+`require 'minispec-metadata/rails'`
+
+(Thanks to @fredngo for help with testing with Rails.)
+
 ## Compatibility
 
-Tested with Minitest 4 and up, Ruby version 2 and up.
+Tested with Minitest 4 and up, Ruby version 2 and up, Rails version 5.1 and up.
 Might work with older versions but I haven't tested them.
-See .travis to see Ruby versions tested.
+See .travis for more info.
