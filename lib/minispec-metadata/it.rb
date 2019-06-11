@@ -7,7 +7,7 @@ module MinispecMetadata
 
     module ClassMethods
 
-      def it(description, *metadata, &block)
+      def it(description = 'anonymous', *metadata, &block)
         name = super description, &block
 
         metadata = MinispecMetadata.extract_metadata(metadata)
