@@ -82,6 +82,33 @@ describe 'VCR trick' do
 end
 ```
 
+Metadata can also be used without the spec DSL when extending `Minitest::Test` by requiring `minispec-metadata/test`.
+
+```ruby
+# readme.test.spec.rb
+require 'minitest/autorun'
+require 'minispec-metadata'
+require 'minispec-metadata/test'
+
+class MyTestClass < Minitest::Test
+  meta_all :foo => :bar # Metadata that will be applied to all tests
+
+  meta :slow # Metadata will be applied to the next available test.
+  def test_metadata_has_meta_from_class_and_test
+    assert_equal metadata, { :foo => :bar, :slow => true }
+  end
+
+  meta :not_used
+  def some_helper_method
+    assert_equal metadata, :foo => :bar
+  end
+
+  def test_metadata_does_not_leak
+    assert_equal metadata, :foo => :bar
+  end
+end
+```
+
 ### Tags
 
 (Only for Ruby >= 2 and Minitest >= 5)
