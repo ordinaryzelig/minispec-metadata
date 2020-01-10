@@ -12,7 +12,7 @@ module MinispecMetadata
       end
 
       def last_defined_metadata
-        @last_defined_metadata || {}
+        @last_defined_metadata ||= {}
       end
 
       def last_defined_metadata=(value)

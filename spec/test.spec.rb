@@ -40,7 +40,7 @@ end
 
 class TestLifecycleSpec < Minitest::Test
   def setup
-    metadata.fetch(:setup).must_equal 'accessible'
+    assert_equal metadata.fetch(:setup), 'accessible'
   end
 
   meta setup: 'accessible', teardown: 'also accessible'
@@ -49,6 +49,6 @@ class TestLifecycleSpec < Minitest::Test
   end
 
   def teardown
-    metadata.fetch(:teardown).must_equal 'also accessible'
+    assert_equal metadata.fetch(:teardown), 'also accessible'
   end
 end
