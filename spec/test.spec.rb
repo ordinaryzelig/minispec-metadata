@@ -6,21 +6,21 @@ base_klass = Minitest::Versions::MAJOR >= 5 ? Minitest::Test : Minitest::Unit::T
 class TestMetaSpec < base_klass
   meta foo: :bar
   def test_metadata_returns_set_metadata
-    metadata.fetch(:foo).must_equal :bar
+    assert_equal metadata.fetch(:foo), :bar
   end
 
   def test_metadata_returns_empty_hash_when_no_metadata_set
-    metadata.must_equal({})
+    assert_equal metadata, {}
   end
 
   meta :not_used
   def some_helper_method
-    metadata.keys.wont_include :not_used
+    refute_includes metadata.keys, :not_used
   end
 
   def test_metadata_only_applies_to_test_methods
     some_helper_method
-    metadata.keys.wont_include :not_used
+    refute_includes metadata.keys, :not_used
   end
 end
 
@@ -29,14 +29,14 @@ class TestAllMetaSpec < base_klass
 
   meta :one
   def test_metadata_returns_meta_for_all_file_one
-    metadata.fetch(:all).must_equal true
-    metadata.fetch(:one).must_equal true
+    assert_equal metadata.fetch(:all), true
+    assert_equal metadata.fetch(:one), true
   end
 
   meta :two
   def test_metadata_returns_meta_for_all_file_two
-    metadata.fetch(:all).must_equal true
-    metadata.fetch(:two).must_equal true
+    assert_equal metadata.fetch(:all), true
+    assert_equal metadata.fetch(:two), true
   end
 end
 
