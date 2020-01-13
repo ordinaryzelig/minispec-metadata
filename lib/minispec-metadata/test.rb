@@ -1,4 +1,8 @@
-require 'minitest/test'
+if Minitest::Versions::MAJOR >= 5
+  require 'minitest/test'
+else
+  require 'minitest/unit'
+end
 
 module MinispecMetadata
   module Test
@@ -39,7 +43,7 @@ module MinispecMetadata
       end
 
       def metadata_for_all_tests
-        @metadata_for_all_tests || {}
+        @metadata_for_all_tests ||= {}
       end
 
       def metadata_for_test_name(test_name)
@@ -55,4 +59,8 @@ module MinispecMetadata
   end
 end
 
-Minitest::Test.send :include, MinispecMetadata::Test
+if Minitest::Versions::MAJOR >= 5
+  Minitest::Test.send :include, MinispecMetadata::Test
+else
+  Minitest::Unit::TestCase.send :include, MinispecMetadata::Test
+end

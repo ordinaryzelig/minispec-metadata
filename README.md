@@ -82,7 +82,8 @@ describe 'VCR trick' do
 end
 ```
 
-Metadata can also be used without the spec DSL when extending `Minitest::Test` by requiring `minispec-metadata/test`.
+Metadata can also be used without the spec DSL when extending `Minitest::Test`, or `Minitest::Unit::TestCase` for
+Minitest 4, by requiring `minispec-metadata/test`.
 
 ```ruby
 # readme.test.spec.rb

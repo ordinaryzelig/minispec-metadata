@@ -1,7 +1,9 @@
 require_relative 'helper'
 require 'minispec-metadata/test'
 
-class TestMetaSpec < Minitest::Test
+base_klass = Minitest::Versions::MAJOR >= 5 ? Minitest::Test : Minitest::Unit::TestCase
+
+class TestMetaSpec < base_klass
   meta foo: :bar
   def test_metadata_returns_set_metadata
     metadata.fetch(:foo).must_equal :bar
@@ -22,7 +24,7 @@ class TestMetaSpec < Minitest::Test
   end
 end
 
-class TestAllMetaSpec < Minitest::Test
+class TestAllMetaSpec < base_klass
   meta_all :all
 
   meta :one
@@ -38,7 +40,7 @@ class TestAllMetaSpec < Minitest::Test
   end
 end
 
-class TestLifecycleSpec < Minitest::Test
+class TestLifecycleSpec < base_klass
   def setup
     assert_equal metadata.fetch(:setup), 'accessible'
   end
