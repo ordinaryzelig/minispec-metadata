@@ -20,39 +20,39 @@ describe 'Usage', some: 'metadata' do
   end
 
   it 'defines a metadata method', more: 'metadata' do
-    metadata.must_equal(
+    _(metadata).must_equal(
       some: 'metadata',
       more: 'metadata',
     )
   end
 
   it 'gives priority to closest metadata', some: 'different metadata' do
-    metadata.must_equal(
+    _(metadata).must_equal(
       some: 'different metadata',
     )
   end
 
   it 'provides a method to get the description of the spec' do
-    desc.must_equal 'provides a method to get the description of the spec'
+    _(desc).must_equal 'provides a method to get the description of the spec'
   end
 
   describe MinispecMetadata, 'additional description' do
 
     it 'provides a method to get the descriptions' do
-      self.class.descs.must_equal [MinispecMetadata, 'additional description']
+      _(self.class.descs).must_equal [MinispecMetadata, 'additional description']
     end
 
     it 'provides a method to get only the additional description' do
-      self.class.additional_desc.must_equal ['additional description']
+      _(self.class.additional_desc).must_equal ['additional description']
     end
 
     it 'is not needed to get the described object' do
       # This is built in to Minitest, you don't need this gem to do this.
-      self.class.desc.must_equal MinispecMetadata
+      _(self.class.desc).must_equal MinispecMetadata
     end
 
     it 'treats additional descriptions as metadata too', meta: 'data' do
-      metadata.must_equal(
+      _(metadata).must_equal(
         :some                    => 'metadata',
         'additional description' => true,
         :meta                    => 'data',
@@ -63,9 +63,9 @@ describe 'Usage', some: 'metadata' do
 
   # Thanks to @mfpiccolo for this.
   it 'allows array of symbols like RSpec', :these, :work, :too do
-    metadata[:these].must_equal true
-    metadata[:work].must_equal true
-    metadata[:too].must_equal true
+    _(metadata[:these]).must_equal true
+    _(metadata[:work]).must_equal true
+    _(metadata[:too]).must_equal true
   end
 
 end

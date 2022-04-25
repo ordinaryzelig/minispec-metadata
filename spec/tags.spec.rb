@@ -8,24 +8,24 @@ if MinispecMetadata.supports_tags?
 
       it 'captures the metadata key' do
         tag = Tag.new('~sure')
-        tag.key.must_equal 'sure'
-        tag.value?.must_equal false
+        _(tag.key).must_equal( 'sure')
+        _(tag.value?).must_equal false
       end
 
       it 'captures metadata key/value' do
         tag = Tag.new('key:value')
-        tag.key.must_equal   'key'
-        tag.value.must_equal 'value'
+        _(tag.key).must_equal(   'key')
+        _(tag.value).must_equal( 'value')
       end
 
       it 'captures inclusivity' do
         tag = Tag.new('sure')
-        tag.must_be :inclusive?
+        _(tag).must_be :inclusive?
       end
 
       it 'captures exclusivity' do
         tag = Tag.new('~sure')
-        tag.must_be :exclusive?
+        _(tag).must_be :exclusive?
       end
 
     end
@@ -61,11 +61,11 @@ if MinispecMetadata.supports_tags?
       def self.assert_runnable_methods_with_tags(tag_strings, expected_runnable_methods)
         it "returns runnable_methods with tag_strings #{tag_strings.inspect}" do
           stub_tags tag_strings do
-            TAGS_TEST
+            _(TAGS_TEST
               .runnable_methods
               .map(&method(:strip_prefix))
-              .sort
-              .must_equal expected_runnable_methods
+              .sort)
+            .must_equal expected_runnable_methods
           end
         end
       end
