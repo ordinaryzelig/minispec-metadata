@@ -27,7 +27,7 @@ module MinispecMetadata
 
     it 'captures exclusivity' do
       tag = Tag.new('~sure')
-      tag.must_be :exclusive?
+      _(tag).must_be :exclusive?
     end
 
   end
