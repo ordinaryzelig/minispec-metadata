@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = MinispecMetadata::VERSION
   gem.authors       = ["Jared Ning"]
   gem.email         = ["jared@redningja.com"]
-  gem.description   = %q{MiniTest::Spec metadata}
-  gem.summary       = %q{Pass metadata to MiniTest::Spec descriptions and specs like in RSpec.}
+  gem.description   = %q{Minitest::Spec metadata}
+  gem.summary       = %q{Pass metadata to Minitest::Spec descriptions and specs like in RSpec.}
   gem.homepage      = "https://github.com/ordinaryzelig/minispec-metadata"
   gem.license       = 'MIT'
 
