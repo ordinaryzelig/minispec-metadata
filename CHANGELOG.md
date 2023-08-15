@@ -1,6 +1,7 @@
 ## 3.4
 
 * Removed support for Ruby <2, Minitest <5.
+* Convert remaining use of MiniTest to Minitest. (@manuelvanrijn)
 
 ## >3.2.1 <3.4
 
