@@ -21,7 +21,6 @@ describe MinispecMetadata do
 
     it 'does not remove metadata from args' do
       args = [:asdf, 'description']
-      metadata = MinispecMetadata.extract_metadata args
       _(args).must_equal [:asdf, 'description']
     end
 

@@ -34,7 +34,7 @@ module MinispecMetadata
 
   TAGS_TEST = describe Tags do
     def self.passing_test(*args)
-      it *args do
+      it(*args) do
         pass
       end
     end
@@ -57,7 +57,7 @@ module MinispecMetadata
     end
 
     def strip_prefix(name)
-      name.sub /^test_\d{4}_/, ''
+      name.sub %r/^test_\d{4}_/, ''
     end
 
     def self.assert_runnable_methods_with_tags(tag_strings, expected_runnable_methods)

@@ -15,7 +15,7 @@ describe MinispecMetadata::It do
   end
 
   name = it 'returns name' do
-    _(name).must_match /test_/
+    _(name).must_match %r/test_/
   end
 
   describe 'before/after hooks' do
