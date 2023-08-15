@@ -5,6 +5,6 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require 'minispec-metadata'
 
-class MiniTest::Unit::TestCase
+class Minitest::Test
   parallelize_me!
 end
