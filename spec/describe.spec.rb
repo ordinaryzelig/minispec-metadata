@@ -93,21 +93,17 @@ describe MinispecMetadata::Describe, 'additional description' do
 
 end
 
-if Minitest::Versions::MAJOR >= 5
+describe 'stuff', 'more stuff', {even_more: 'stuff'}, :holy_cow_that_is_a_lot_of_stuff, :minitest_5 do
 
-  describe 'stuff', 'more stuff', {even_more: 'stuff'}, :holy_cow_that_is_a_lot_of_stuff, :minitest_5 do
-
-    it 'preserves additional description but still allows any value for metadata', :more? => 'yeah' do
-      self.class.descs.must_equal ['stuff', 'more stuff', {even_more: 'stuff'}, :holy_cow_that_is_a_lot_of_stuff, :minitest_5]
-      metadata.must_equal(
-        'more stuff'                     => true,
-        :even_more                       => 'stuff',
-        :holy_cow_that_is_a_lot_of_stuff => true,
-        :more?                           => 'yeah',
-        :minitest_5                      => true,
-      )
-    end
-
+  it 'preserves additional description but still allows any value for metadata', :more? => 'yeah' do
+    self.class.descs.must_equal ['stuff', 'more stuff', {even_more: 'stuff'}, :holy_cow_that_is_a_lot_of_stuff, :minitest_5]
+    metadata.must_equal(
+      'more stuff'                     => true,
+      :even_more                       => 'stuff',
+      :holy_cow_that_is_a_lot_of_stuff => true,
+      :more?                           => 'yeah',
+      :minitest_5                      => true,
+    )
   end
 
 end
@@ -115,11 +111,7 @@ end
 describe MinispecMetadata::Describe, 'additional description', :respect do
 
   it 'respects additional description' do
-    if Minitest::Versions::MAJOR <= 4
-      self.class.name.must_equal 'MinispecMetadata::Describe::additional description'
-    else
-      self.class.name.must_equal 'MinispecMetadata::Describe::additional description::respect'
-    end
+    self.class.name.must_equal 'MinispecMetadata::Describe::additional description::respect'
     metadata.must_equal(
       'additional description' => true,
       :respect                 => true,

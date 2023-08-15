@@ -1,7 +1,6 @@
 require 'minitest/spec'
 
 require 'minitest/versions'
-require_relative 'backwards'
 
 require 'minispec-metadata/version'
 
