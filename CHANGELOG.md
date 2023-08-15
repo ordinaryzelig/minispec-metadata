@@ -1,6 +1,6 @@
 ## 3.5.0
 
-* Use Minitest \_() syntax to get rid of deprecation warnings.
+* Use Minitest \_() syntax to get rid of deprecation warnings. (@The-Alchemist)
 
 ## 3.4
 
