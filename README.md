@@ -131,6 +131,4 @@ Whatever path you decide to take, do this AFTER you've taken those steps:
 
 ## Compatibility
 
-Tested with Minitest 4 and up, Ruby version 2 and up, Rails version 5.1 and up.
-Might work with older versions but I haven't tested them.
-See .travis for more info.
+Tested with Minitest 5, Ruby version 3, Rails version 5.1.
