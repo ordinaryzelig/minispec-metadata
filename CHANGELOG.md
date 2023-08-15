@@ -1,3 +1,7 @@
+## 3.5.0
+
+* Use Minitest \_() syntax to get rid of deprecation warnings.
+
 ## 3.4
 
 * Removed support for Ruby <2, Minitest <5.
