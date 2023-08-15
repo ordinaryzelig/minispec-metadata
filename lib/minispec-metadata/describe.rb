@@ -4,15 +4,7 @@ module MinispecMetadata
     def describe(desc, *additional_desc, &block)
       metadata = MinispecMetadata.extract_metadata additional_desc
 
-      # Minitest 5 allows unlimited additional_desc.
-      # Minitest 4 allows max 1 additional_desc.
-      # So we need to pass up only the number of allowed additional_desc.
-      additional_allowed =
-        if Minitest::Versions::MAJOR <= 4
-          additional_desc.first(1)
-        else
-          additional_desc
-        end
+      additional_allowed = additional_desc
 
       cls = super(desc, *additional_allowed.compact, &block)
       cls.extend ClassMethods
