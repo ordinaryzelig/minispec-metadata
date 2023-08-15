@@ -1,3 +1,11 @@
+## 3.4
+
+* Removed support for Ruby <2, Minitest <5.
+
+## >3.2.1 <3.4
+
+Lazily (not) documented here.
+
 ## 3.2.1
 
 * Remove backwards compatibility for `__dir__`. (Thanks @brennovich for noticiing.)
