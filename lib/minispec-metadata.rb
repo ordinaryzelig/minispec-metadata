@@ -1,7 +1,5 @@
 require 'minitest/spec'
 
-require 'minitest/versions'
-
 require 'minispec-metadata/version'
 
 require 'minispec-metadata/it'
